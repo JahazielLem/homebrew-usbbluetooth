@@ -31,7 +31,7 @@ class Usbbluetooth < Formula
     system ENV.cc, "test.c",
            "-I#{include}",
            "-L#{lib}",
-           "-I/opt/homebrew/include/usbbluetooth"
+           "-I/opt/homebrew/include/usbbluetooth",
            "-lusbbluetooth",
            "-o", "test"
   end
