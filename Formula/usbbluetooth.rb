@@ -10,7 +10,6 @@ class Usbbluetooth < Formula
   depends_on "pkg-config" => :build
   depends_on "libusb"
 
-  use_flag ""
   def install
     system "meson", "setup", "build",
            "--prefix=#{prefix}",
@@ -28,13 +27,10 @@ class Usbbluetooth < Formula
           return 0;
       }
     EOS
-    if OS.mac?
-      use_flag = "-I/opt/homebrew/include/usbbluetooth"
-    end
     system ENV.cc, "test.c",
            "-I#{include}",
            "-L#{lib}",
-           "#{use_flag}",
+           "-I/opt/homebrew/include/usbbluetooth",
            "-lusbbluetooth",
            "-o", "test"
   end
